@@ -5,9 +5,14 @@ import 'package:rive/rive.dart';
 
 class RiveService {
   RiveFile? _feedEmotionRiveFile;
+  static RiveService? _instance;
 
   RiveService._();
-  static final RiveService instance = RiveService._();
+
+  static RiveService get instance {
+    _instance ??= RiveService._();
+    return _instance!;
+  }
 
   init() async {
     await RiveFile.initialize();
